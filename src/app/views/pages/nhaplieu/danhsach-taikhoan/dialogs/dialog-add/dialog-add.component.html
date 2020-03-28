@@ -1,0 +1,129 @@
+<kt-porlet>
+  <kt-porlet-body>
+    <div class="kt-portlet" [ngClass]="{ 'kt-portlet--body-progress kt-portlet--body-progress-overlay' : viewLoading }">
+      <div class="kt-portlet__head kt-portlet__head__custom">
+        <div class="kt-portlet__head-label">
+          <h3 class="kt-portlet__head-title">Kích hoạt người dùng</h3>
+        </div>
+      </div>
+      <form class="kt-form" [formGroup]="customerForm">
+        <div class="kt-portlet__body">
+
+          <div class="kt-portlet__body-progress">
+            <mat-spinner [diameter]="20"></mat-spinner>
+          </div>
+
+          <kt-alert *ngIf="hasFormErrors" type="warn" [duration]="30000" [showCloseButton]="true"
+            (close)="onAlertClose($event)">
+            Oh snap! Change a few things up and try submitting again.
+          </kt-alert>
+
+          <h3 class="kt-portlet__head-title ng-star-inserted">Thông tin người dùng</h3>
+          <div class="form-group kt-form__group row">
+            <div class="col-xl-4 kt-margin-bottom-20-mobile">
+              <label>Họ tên: </label>
+              <mat-form-field class="mat-form-field-fluid">
+                <input matInput formControlName="fullName" readonly />
+              </mat-form-field>
+            </div>
+            <div class="col-xl-4 kt-margin-bottom-20-mobile">
+              <label>Dien thoai: </label>
+              <mat-form-field class="mat-form-field-fluid">
+                <input matInput formControlName="phone" readonly />
+              </mat-form-field>
+            </div>
+            <div class="col-xl-4 kt-margin-bottom-20-mobile">
+              <label>Email: </label>
+              <mat-form-field class="mat-form-field-fluid">
+                <input matInput formControlName="email" readonly />
+
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div class="kt-separator kt-separator--dashed"></div>
+          <h3 class="kt-portlet__head-title ng-star-inserted">Thông tin người giới thiệu</h3>
+          <div class="form-group kt-form__group row">
+            <div class="col-xl-4 kt-margin-bottom-20-mobile">
+              <label>Họ tên: </label>
+              <mat-form-field class="mat-form-field-fluid">
+                <input matInput formControlName="fullNameGT" readonly />
+              </mat-form-field>
+            </div>
+            <div class="col-xl-4 kt-margin-bottom-20-mobile">
+              <label>Dien thoai: </label>
+              <mat-form-field class="mat-form-field-fluid">
+                <input matInput formControlName="phoneGT" readonly />
+              </mat-form-field>
+            </div>
+            <div class="col-xl-4 kt-margin-bottom-20-mobile">
+              <label>Email: </label>
+              <mat-form-field class="mat-form-field-fluid">
+                <input matInput formControlName="emailGT" readonly />
+
+              </mat-form-field>
+            </div>
+          </div>
+
+          <h3 class="kt-portlet__head-title ng-star-inserted">Thông tin thanh toán</h3>
+          <div class="form-group kt-form__group row">
+            <kt-alert type="info" [showCloseButton]="false">
+              <img src="https://znews-photo.zadn.vn/w660/Uploaded/chuobun/2019_06_17/tra_cuu_hoa_don_tien_dien_1x.jpg"
+                class="img-fluid" alt="Responsive Image" width="100%" height="300" />
+            </kt-alert>
+          </div>
+
+          <div class="kt-separator kt-separator--dashed"></div>
+          <h3 class="kt-portlet__head-title ng-star-inserted">Thông tin thẻ hạn mức</h3>
+          <div class="form-group kt-form__group row">
+            <div class="col-lg-4 kt-margin-bottom-20-mobile">
+              <mat-form-field class="mat-form-field-fluid">
+                <input type="email" matInput placeholder="Mã code" formControlName="code" />
+                <mat-error>
+                  <strong>Mã code bắt buộc nhập</strong>
+                </mat-error>
+                <mat-hint align="start">Vui lòng nhập mã
+                  <strong>Code</strong> </mat-hint>
+              </mat-form-field>
+            </div>
+            <div class="col-lg-4 kt-margin-bottom-20-mobile">
+              <mat-form-field class="mat-form-field-fluid">
+                <input matInput [matDatepicker]="picker1" formControlName="startDate" placeholder="Ngày bắt đầu" />
+                <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                <mat-datepicker #picker1></mat-datepicker>
+                <mat-hint align="start">Nhập ngày bắt đầu dạng 'dd/mm/yyyy'</mat-hint>
+              </mat-form-field>
+            </div>
+            <div class="col-lg-4 kt-margin-bottom-20-mobile">
+              <mat-form-field class="mat-form-field-fluid">
+                <input matInput [matDatepicker]="picker2" formControlName="endDate" placeholder="Ngày kết thúc" />
+                <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                <mat-datepicker #picker2></mat-datepicker>
+                <mat-hint align="start">Nhập ngày kết thúc dạng 'dd/mm/yyyy'</mat-hint>
+              </mat-form-field>
+            </div>
+
+          </div>
+          <div class="kt-separator kt-separator--dashed"></div>
+
+        </div>
+        <div class="kt-portlet__foot kt-portlet__no-border kt-portlet__foot--fit">
+          <div class="kt-form__actions kt-form__actions--solid">
+            <div class="row text-right">
+              <div class="col-lg-12">
+                <button type="button" mat-raised-button [mat-dialog-close]="data.animal" cdkFocusInitial
+                  matTooltip="Hủy bỏ">
+                  Cancel
+                </button>&nbsp;
+                <button type="button" mat-raised-button color="primary" (click)="onSubmit()" [disabled]="viewLoading"
+                  matTooltip="Kích hoạt">
+                  Save
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </kt-porlet-body>
+</kt-porlet>

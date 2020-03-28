@@ -1,0 +1,43 @@
+<kt-porlet class="danhsach-capduoi">
+    <kt-porlet-body>
+        <mat-checkbox [(ngModel)]="recursive">MyPosition</mat-checkbox>
+        <mat-form-field>
+            <input matInput placeholder="Search" (input)="filterChanged($event.target.value)">
+        </mat-form-field>
+        <mat-card>
+            <mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
+                <mat-nested-tree-node *matTreeNodeDef="let node">
+                    <li>
+                        <div class="mat-tree-node"> {{node.item.fullname}} | {{node.item.phone}}</div>
+                    </li>
+                </mat-nested-tree-node>
+                <mat-nested-tree-node *matTreeNodeDef="let node; when: hasChildren">
+                    <li class="example-tree-container">
+                        <div class="mat-tree-node">
+                            <!-- (click)="clickNode(node.item)" -->
+                            <button mat-icon-button matTreeNodeToggle [matTreeNodeToggleRecursive]="recursive"
+                                [attr.aria-label]="'toggle ' + node.filename">
+                                <mat-icon>
+                                    {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+                                </mat-icon>
+
+                            </button>
+                            {{node.item.fullname}} | {{node.item.phone}}
+                            <button mat-icon-button *ngIf="treeControl.isExpanded(node)">
+                                <mat-icon>
+                                    info-circle
+                                </mat-icon>
+                            </button>
+                        </div>
+                        <ul class="example-tree-nested-node">
+                            <div *ngIf="treeControl.isExpanded(node)">
+                                <ng-container matTreeNodeOutlet></ng-container>
+                            </div>
+                        </ul>
+                    </li>
+
+                </mat-nested-tree-node>
+            </mat-tree>
+        </mat-card>
+    </kt-porlet-body>
+</kt-porlet>

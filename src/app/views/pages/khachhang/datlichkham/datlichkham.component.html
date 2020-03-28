@@ -1,0 +1,125 @@
+<kt-portlet>
+    <kt-portlet-body>
+
+        <!--begin: Wizard -->
+        <div #wizard class="kt-grid kt-wizard-v3 kt-wizard-v3--white" id="kt_wizard_v3"
+            data-ktwizard-state="step-first">
+
+            <div class="kt-grid__item kt-grid__item--fluid kt-wizard-v3__wrapper">
+                <!--begin: Form Wizard Form-->
+                <form class="kt-form" id="kt_form">
+                    <!--begin: Form Wizard Step 1-->
+                    <div class="kt-wizard-v3__content" data-ktwizard-type="step-content" data-ktwizard-state="current">
+                        <div class="kt-heading kt-heading--md">Đặt lịch khám của bạn</div>
+                        <div class="kt-form__section kt-form__section--first">
+                            <div class="kt-wizard-v3__form">
+                                <div class="form-group">
+                                    <label>Số điện thoại</label>
+                                    <input type="text" class="form-control" name="address1" [(ngModel)]="model.address1"
+                                        placeholder="Số điện thoại" value="">
+                                    <!-- <span class="form-text text-muted">Please enter your Address.</span> -->
+                                </div>
+                                <div class="form-group">
+                                    <label>Tiêu đề</label>
+                                    <input type="text" class="form-control" name="address2" [(ngModel)]="model.address2"
+                                        placeholder="Tiêu đề" value="Address Line 2">
+                                    <!-- <span class="form-text text-muted">Please enter your Address.</span> -->
+                                </div>
+                                <div class="form-group">
+                                    <label>Nội dung</label>
+                                    <input type="text" class="form-control" name="address2" [(ngModel)]="model.address2"
+                                        placeholder="Tiêu đề" value="Address Line 2">
+                                    <!-- <span class="form-text text-muted">Please enter your Address.</span> -->
+                                </div>
+                                <div class="form-group">
+                                    <label>Chon bac sy</label>
+                                    <input type="text" class="form-control" name="address2" [(ngModel)]="model.address2"
+                                        placeholder="Chon bac sy" value="">
+                                    <!-- <span class="form-text text-muted">Please enter your Address.</span> -->
+                                </div>
+                                <div class="row">
+                                    <div class="col-xl-4">
+                                        <div class="form-group">
+                                            <label>Ngày</label>
+                                            <!-- <input type="text" class="form-control" name="postcode"
+                                                [(ngModel)]="model.postcode" placeholder="Postcode" value="3000"> -->
+                                            <mat-form-field class="input-group date">
+                                                <input class="form-control" matInput [matDatepickerFilter]="myFilter"
+                                                    [matDatepicker]="picker" placeholder="Choose a date" />
+
+                                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                                <mat-datepicker #picker></mat-datepicker>
+                                            </mat-form-field>
+                                            <!-- <span class="form-text text-muted">Please enter your Postcode.</span> -->
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-4">
+                                        <div class="form-group">
+                                            <label>Giờ</label>
+                                            <select name="loccountry" [(ngModel)]="model.hours" class="form-control">
+                                                <option value="AF">6</option>
+                                                <option value="AF">7</option>
+                                                <option value="AF">8</option>
+                                                <option value="AF">9</option>
+                                                <option value="AF">10</option>
+                                                <option value="AF">11</option>
+                                                <option value="AF">12</option>
+                                                <option value="AF">13</option>
+                                                <option value="AF">14</option>
+                                                <option value="AF">15</option>
+                                                <option value="AF">16</option>
+                                                <option value="AF">17</option>
+                                                <option value="AF">18</option>
+                                                <option value="AF">19</option>
+                                                <option value="AF">20</option>
+                                            </select>
+                                            <!-- <span class="form-text text-muted">Please enter your City.</span> -->
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-4">
+                                        <div class="form-group">
+                                            <label>Phút</label>
+                                            <select name="loccountry" [(ngModel)]="model.loccountry"
+                                                class="form-control">
+                                                <option value="AF">00</option>
+                                                <option value="AF">15</option>
+                                                <option value="AF">30</option>
+                                                <option value="AF">45</option>
+                                            </select>
+                                            <!-- <span class="form-text text-muted">Please enter your City.</span> -->
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!--end: Form Wizard Step 1-->
+
+
+
+                    <!--begin: Form Actions -->
+                    <div class="kt-form__actions">
+                        <!-- <div class="btn btn-secondary btn-md btn-tall btn-wide kt-font-bold kt-font-transform-u"
+                            data-ktwizard-type="action-prev">
+                            Previous
+                        </div>
+                        <div (click)="onSubmit()"
+                            class="btn btn-success btn-md btn-tall btn-wide kt-font-bold kt-font-transform-u"
+                            data-ktwizard-type="action-submit">
+                            Submit
+                        </div> -->
+                        <div class="btn btn-brand btn-md btn-tall btn-wide kt-font-bold kt-font-transform-u"
+                            data-ktwizard-type="action-next">
+                            Đăng ký
+                        </div>
+                    </div>
+                    <!--end: Form Actions -->
+                </form>
+                <!--end: Form Wizard Form-->
+            </div>
+        </div>
+        <!--end: Wizard -->
+
+    </kt-portlet-body>
+</kt-portlet>

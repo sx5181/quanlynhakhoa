@@ -1,0 +1,28 @@
+// import login css
+@import "sass/pages/login/login-1";
+
+kt-auth,
+.kt-login {
+	height: 100%;
+
+	.mat-form-field {
+		width: 100%;
+	}
+
+	// add extra right padding when displaying spinner in button
+	.kt-spinner {
+		padding-right: 3rem !important;
+	}
+}
+
+.mat-form-field label {
+	font-size: 16px;
+}
+
+.mat-form-field.mat-form-field-should-float label {
+	font-size: 15px;
+}
+
+.mat-form-field {
+	line-height: 1.6;
+}
