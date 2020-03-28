@@ -1,0 +1,239 @@
+<!--begin::Body-->
+<div class="kt-login__body">
+	<!--begin::Signin-->
+	<div class="kt-login__form">
+		<div class="kt-login__title">
+			<h3>Đăng ký tài khoản</h3>
+		</div>
+
+		<kt-auth-notice></kt-auth-notice>
+
+		<form class="kt-login__form kt-form" [formGroup]="registerForm" autocomplete="off">
+
+			<div *ngIf="step==0">
+				<p>Thông tin cơ bản</p>
+				<div class="form-group">
+					<mat-form-field>
+						<mat-label>Họ và tên</mat-label>
+						<input matInput type="text" placeholder="Họ và tên" formControlName="fullname" />
+						<mat-error *ngIf="isControlHasError('fullname','required')">
+							<strong>Trường yêu cầu bắt buộc phải nhập</strong>
+						</mat-error>
+					</mat-form-field>
+				</div>
+				<div class="form-group">
+					<mat-form-field>
+						<mat-label>Số điện thoại</mat-label>
+						<input matInput type="text" placeholder="Số điện thoại" formControlName="phone" />
+						<mat-error *ngIf=" isControlHasError('phone','required')">
+							<strong>Trường yêu cầu bắt buộc phải nhập</strong>
+						</mat-error>
+
+						<mat-error *ngIf=" isControlHasError('phone','pattern')">
+							<strong>Sai định dạng số điện thoại</strong>
+						</mat-error>
+					</mat-form-field>
+				</div>
+				<div class="form-group">
+					<mat-form-field>
+						<mat-label>Email</mat-label>
+						<input matInput type="email" placeholder="{{ 'AUTH.INPUT.EMAIL' | translate }}"
+							formControlName="email" autocomplete="off" />
+						<mat-error *ngIf=" isControlHasError('email','required')">
+							<strong>Trường yêu cầu bắt buộc phải nhập</strong>
+						</mat-error>
+						<mat-error *ngIf=" isControlHasError('email','email')">
+							<strong>Sai định dạng email</strong>
+						</mat-error>
+						<mat-error *ngIf=" isControlHasError('email','minlength')">
+							<strong>Số ký tự ít nhất là 3</strong>
+						</mat-error>
+						<mat-error *ngIf=" isControlHasError('email','maxlength')">
+							<strong>Số ký tự nhiều nhất là 320</strong>
+						</mat-error>
+					</mat-form-field>
+				</div>
+
+				<div class="form-group">
+					<mat-form-field>
+						<mat-label>Địa chỉ</mat-label>
+						<input matInput type="text" placeholder="Địa chỉ" formControlName="address" />
+						<mat-error *ngIf="isControlHasError('address','required')">
+							<strong>Trường yêu cầu bắt buộc phải nhập</strong>
+						</mat-error>
+					</mat-form-field>
+				</div>
+
+				<div class="form-group">
+					<mat-form-field>
+						<mat-label>Mật khẩu</mat-label>
+						<input matInput type="password" placeholder="Mật khẩu" formControlName="password"
+							autocomplete="off" />
+						<mat-error *ngIf=" isControlHasError('password','required')">
+							<strong>Trường yêu cầu bắt buộc phải nhập</strong>
+						</mat-error>
+						<mat-error *ngIf=" isControlHasError('password','minlength')">
+							<strong>Mật khẩu có ít nhất 6 ký tự</strong>
+						</mat-error>
+					</mat-form-field>
+				</div>
+				<div class="form-group">
+					<mat-form-field>
+						<mat-label>Xác nhận mật khẩu</mat-label>
+						<input matInput type="password" placeholder="Xác nhận mật khẩu"
+							formControlName="confirmPassword" autocomplete="off" />
+						<mat-error *ngIf=" isControlHasError('confirmPassword','required')">
+							<strong>Trường yêu cầu bắt buộc phải nhập</strong>
+						</mat-error>
+						<mat-error *ngIf=" isControlHasError('password','minlength')">
+							<strong>Mật khẩu có ít nhất 6 ký tự</strong>
+						</mat-error>
+						<mat-error
+							*ngIf=" registerForm.get('confirmPassword').errors && registerForm.get('confirmPassword').errors.ConfirmPassword">
+							<strong>Mật khẩu xác nhận không trùng khớp</strong>
+						</mat-error>
+					</mat-form-field>
+				</div>
+			</div>
+			<!--End step 1-->
+			<div *ngIf="step==1">
+				<p>Thông tin người hưởng thụ</p>
+				<!-- <div class="form-group">
+					<mat-form-field>
+						<mat-label>Mã code</mat-label>
+						<input matInput type="text" placeholder="Mã thẻ khách hàng" formControlName="code" />
+						<mat-error *ngIf="isControlHasError('code','required')">
+							<strong>Trường yêu cầu bắt buộc phải nhập</strong>
+						</mat-error>
+					</mat-form-field>
+				</div> -->
+				<div class="form-group">
+					<mat-form-field>
+						<mat-label>SĐT Người hưởng thụ 1</mat-label>
+						<input matInput type="text" placeholder="Số điện thoại người hưởng thụ thứ nhất"
+							formControlName="phone1" />
+					</mat-form-field>
+				</div>
+				<div class="form-group">
+					<mat-form-field>
+						<mat-label>SĐT Người hưởng thụ 2</mat-label>
+						<input matInput type="text" placeholder="Số điện thoại người hưởng thụ thứ nhất"
+							formControlName="phone2" />
+					</mat-form-field>
+				</div>
+				<div class="form-group">
+					<mat-form-field>
+						<mat-label>SĐT Người hưởng thụ 3</mat-label>
+						<input matInput type="text" placeholder="Số điện thoại người hưởng thụ thứ nhất"
+							formControlName="phone3" />
+					</mat-form-field>
+				</div>
+				<div class="form-group">
+					<mat-form-field>
+						<mat-label>SĐT Người hưởng thụ 4</mat-label>
+						<input matInput type="text" placeholder="Số điện thoại người hưởng thụ thứ nhất"
+							formControlName="phone4" />
+					</mat-form-field>
+				</div>
+			</div>
+			<!--End step 2-->
+
+			<div *ngIf="step==2">
+				<p>Thông tin thanh toán</p>
+				<div class="form-group">
+					<label id="example-radio-group-label">Lựa chọn loại dịch vụ thẻ</label><br />
+					<mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group"
+						[(ngModel)]="optionCard" [ngModelOptions]="{standalone: true}">
+						<mat-radio-button value="card_2_trieu" class="example-radio-button">
+							Gói 2 triệu
+						</mat-radio-button>
+						<mat-radio-button value="card_5_trieu" class="example-radio-button">
+							Gói 5 triệu
+						</mat-radio-button>
+					</mat-radio-group>
+				</div>
+				<div class="form-group">
+					<p class="font-weight-bold " style="margin-top: 10px;"> Quyền lợi</p>
+					<div *ngIf="optionCard==='card_2_trieu'" class="kt-timeline-v2"
+						style="padding-top:15px; padding-bottom: 15px">
+						<div class="kt-timeline-v2__items  kt-padding-top-25 kt-padding-bottom-30">
+							<div class="kt-timeline-v2__item">
+								<!-- <span class="kt-timeline-v2__item-time">1</span> -->
+								<div class="kt-timeline-v2__item-cricle">
+									<i class="fa fa-genderless kt-font-warning"></i>
+								</div>
+								<div class="kt-timeline-v2__item-text  kt-padding-top-5">
+									Được đăng ký 4 người
+								</div>
+							</div>
+							<div class="kt-timeline-v2__item">
+								<!-- <span class="kt-timeline-v2__item-time">2</span> -->
+								<div class="kt-timeline-v2__item-cricle">
+									<i class="fa fa-genderless kt-font-warning"></i>
+								</div>
+								<div class="kt-timeline-v2__item-text  kt-padding-top-5">
+									Được miến phí lấy các loại trên đời
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div *ngIf="optionCard==='card_5_trieu'" class="kt-timeline-v2"
+						style="padding-top:15px; padding-bottom: 15px">
+						<div class="kt-timeline-v2__items  kt-padding-top-25 kt-padding-bottom-30">
+							<div class="kt-timeline-v2__item">
+								<!-- <span class="kt-timeline-v2__item-time">1</span> -->
+								<div class="kt-timeline-v2__item-cricle">
+									<i class="fa fa-genderless kt-font-brand"></i>
+								</div>
+								<div class="kt-timeline-v2__item-text kt-timeline-v2__item-text--bold">
+									Gia tri <span class="kt-link kt-link--brand kt-font-bolder">5 trieu dong</span>
+								</div>
+							</div>
+							<div class="kt-timeline-v2__item">
+								<!-- <span class="kt-timeline-v2__item-time">2</span> -->
+								<div class="kt-timeline-v2__item-cricle">
+									<i class="fa fa-genderless kt-font-brand"></i>
+								</div>
+								<div class="kt-timeline-v2__item-text kt-timeline-v2__item-text--bold">
+									Duoc tat ca quyen loi goi 2 trieu
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="form-group">
+					<label style="margin-right: 20px;" id="example-radio-group-label">Upload hoa don</label>
+					<button type="button" id="kt_login_upload_hoadon"
+						class="btn btn-primary btn-elevate kt-login__btn-primary"
+						[ngClass]="{'kt-spinner kt-spinner--right kt-spinner--md kt-spinner--light': loading}">Tải
+						lên</button>
+				</div>
+				<br />
+				<div class="form-group">
+					<mat-checkbox name="agree" formControlName="agree">
+						Tôi đồng ý với các <a href="javascript:;">điều khoản và chính sách</a>
+					</mat-checkbox>
+				</div>
+			</div>
+			<!--End step 3-->
+			<!--begin::Action-->
+			<div class="kt-login__actions">
+				<a href="javascript:;" routerLink="/auth/forgot-password" class="kt-link kt-login__link-forgot">
+					Quên mật khẩu
+				</a>
+				<button routerLink="/auth/login" [disabled]="loading" id="kt_login_signup_cancel"
+					class="btn btn-secondary btn-elevate kt-login__btn-secondary">Đăng nhập</button>
+				<button *ngIf="step<2" type="button" (click)="nextStep()" id="kt_login_signin_next"
+					class="btn btn-primary btn-elevate kt-login__btn-primary"
+					[ngClass]="{'kt-spinner kt-spinner--right kt-spinner--md kt-spinner--light': loading}">Tiếp
+					theo</button>
+				<button *ngIf="step==2" (click)="submit()" id="kt_login_signin_submit"
+					class="btn btn-primary btn-elevate kt-login__btn-primary"
+					[ngClass]="{'kt-spinner kt-spinner--right kt-spinner--md kt-spinner--light': loading}">Đăng
+					ký</button>
+			</div>
+			<!--end::Action-->
+		</form>
+	</div>
+</div>

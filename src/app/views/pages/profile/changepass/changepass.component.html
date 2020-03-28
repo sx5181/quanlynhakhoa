@@ -1,0 +1,86 @@
+<div class="kt-grid__item kt-grid__item--fluid kt-app__content">
+    <div class="row">
+        <div class="col-xl-12">
+            <div class="kt-portlet">
+                <div class="kt-portlet__head">
+                    <div class="kt-portlet__head-label">
+                        <h3 class="kt-portlet__head-title">Đổi mật khẩu</h3>
+                    </div>
+                </div>
+                <form class="kt-form kt-form--label-right" [formGroup]="myForm">
+                    <div class="kt-portlet__body">
+                        <div class="kt-section kt-section--first">
+                            <div class="kt-section__body">
+                                <div class="row">
+                                    <label class="col-xl-3"></label>
+                                    <div class="col-lg-9 col-xl-6">
+                                        <h3 class="kt-section__title kt-section__title-sm">Thay đổi mật khẩu của bạn:
+                                        </h3>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-xl-3 col-lg-3 col-form-label">Mật khẩu cũ</label>
+                                    <div class="col-lg-9 col-xl-6">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend"><span class="input-group-text"><i
+                                                        class="la la-unlock-alt"></i></span></div>
+                                            <input formControlName="oldpassword" type="password" class="form-control"
+                                                value="" placeholder="Nhập mật khẩu cũ" aria-describedby="basic-addon1">
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-xl-3 col-lg-3 col-form-label">Mật khẩu mới</label>
+                                    <div class="col-lg-9 col-xl-6">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend"><span class="input-group-text"><i
+                                                        class="la la-unlock"></i></span></div>
+                                            <input formControlName="password" type="password" class="form-control"
+                                                value="" placeholder="Nhập mật khẩu mới"
+                                                aria-describedby="basic-addon1">
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-xl-3 col-lg-3 col-form-label">Nhập lại mật khẩu mới</label>
+                                    <div class="col-lg-9 col-xl-6">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend"><span class="input-group-text"><i
+                                                        class="la la-unlock"></i></span></div>
+                                            <input matInput formControlName="confirmPassword"
+                                                [errorStateMatcher]="matcher" type="password" class="form-control"
+                                                value="" placeholder="Nhập lại mật khẩu mới"
+                                                aria-describedby="basic-addon1">
+                                        </div>
+                                        <label class="text-danger" *ngIf="myForm.hasError('notSame')">
+                                            Mật khẩu nhập lại không khớp
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="kt-portlet__foot">
+                        <div class="kt-form__actions">
+                            <div class="row">
+                                <div class="col-lg-3 col-xl-3">
+                                </div>
+                                <div class="col-lg-9 col-xl-9">
+                                    <button [disabled]="!myForm.valid" type="reset" class="btn btn-success">Cập
+                                        nhật</button>&nbsp;
+                                    <!-- <button type="reset" class="btn btn-secondary">Cancel</button> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
